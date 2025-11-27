@@ -2,21 +2,21 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files and install dependencies (include devDependencies)
 COPY package*.json ./
-RUN npm ci --production --silent
+RUN npm ci --silent
 
 # Copy the rest of the code
 COPY . .
 
-# Build the Angular project (outputs to /app/dist)
-RUN npx ng build --output-path=./dist --configuration=production
+# Build the Angular project (use configured outputPath)
+RUN npx ng build --configuration=production
 
 # Production stage: serve with nginx
 FROM nginx:1.25-alpine
 
-# Copy built Angular files
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy built Angular files (match angular.json outputPath)
+COPY --from=builder /app/dist/angular-15-crud /usr/share/nginx/html
 
 # Remove default nginx config
 RUN rm /etc/nginx/conf.d/default.conf
