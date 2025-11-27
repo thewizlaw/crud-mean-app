@@ -10,7 +10,7 @@ RUN npm ci --production --silent
 COPY . .
 
 # Build the Angular project (outputs to /app/dist)
-RUN npm run build -- --output-path=./dist --configuration=production
+RUN npx ng build --output-path=./dist --configuration=production
 
 # Production stage: serve with nginx
 FROM nginx:1.25-alpine
