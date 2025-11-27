@@ -2,8 +2,8 @@
 FROM node:20-alpine AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN apk add --no-cache python3 make g++ libc6-compat \
- && npm ci --silent
+RUN apk add --no-cache python3 make g++ libc6-compat
+RUN npm ci --silent
 
 # runtime stage: smaller final image
 FROM node:20-alpine AS runtime
