@@ -1,11 +1,11 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Install native build tools needed for modules that use node-gyp
 # Use build-base (includes gcc/g++/make) plus linux-headers and python3
-RUN apk add --no-cache python3 make g++ libc6-compat \
-    && npm ci --legacy-peer-deps --silent
+RUN apk add --no-cache python3 make g++ libc6-compat
+RUN npm ci --legacy-peer-deps --silent
 
 # Copy package files first for caching
 COPY package*.json ./
