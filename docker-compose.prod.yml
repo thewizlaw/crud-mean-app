@@ -1,0 +1,43 @@
+# docker-compose.prod.yml
+version: "3.8"
+services:
+  frontend:
+    image: DOCKERHUB_USER/crud-frontend:latest
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    image: DOCKERHUB_USER/crud-backend:latest
+    environment:
+      - PORT=8080
+      - MONGO_URI=mongodb://mongo:27017/tutorials_db
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  nginx:
+    image: nginx:1.25-alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
