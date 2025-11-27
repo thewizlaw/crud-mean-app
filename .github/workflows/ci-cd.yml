@@ -25,8 +25,16 @@ jobs:
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
-          push: true
+          push: false
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/crud-frontend:latest
+        continue-on-error: true
+
+      - name: Show npm error logs (if present)
+        run: |
+          echo "=== Printing logs ==="
+          find /home/runner/.npm/_logs -type f -print -exec cat {} \; || true
+        shell: bash
+          
 
       # Build and push backend
       - name: Build and push backend image
