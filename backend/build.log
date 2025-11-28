@@ -1,0 +1,126 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 762B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 ...
+
+#3 [auth] library/node:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:20-alpine
+#2 DONE 2.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/node:20-alpine@sha256:16858294071a56ffd4cce9f17b57136cc39e41507b40e245b4f8e906f7a19463
+#5 resolve docker.io/library/node:20-alpine@sha256:16858294071a56ffd4cce9f17b57136cc39e41507b40e245b4f8e906f7a19463 0.0s done
+#5 CACHED
+
+#6 [build 2/6] WORKDIR /usr/src/app
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 22.01MB 0.6s done
+#7 DONE 0.7s
+
+#8 [runtime 3/5] COPY package*.json ./
+#8 DONE 0.1s
+
+#9 [build 3/6] RUN apk add --no-cache     python3     make     g++     libc6-compat
+#9 0.214 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/APKINDEX.tar.gz
+#9 0.503 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/aarch64/APKINDEX.tar.gz
+#9 0.805 (1/32) Installing libstdc++-dev (14.2.0-r6)
+#9 1.130 (2/32) Installing jansson (2.14.1-r0)
+#9 1.157 (3/32) Installing zstd-libs (1.5.7-r0)
+#9 1.207 (4/32) Installing binutils (2.44-r3)
+#9 1.496 (5/32) Installing libgomp (14.2.0-r6)
+#9 1.533 (6/32) Installing libatomic (14.2.0-r6)
+#9 1.566 (7/32) Installing gmp (6.3.0-r3)
+#9 1.608 (8/32) Installing isl26 (0.26-r1)
+#9 1.696 (9/32) Installing mpfr4 (4.2.1_p1-r0)
+#9 1.750 (10/32) Installing mpc1 (1.3.1-r1)
+#9 1.781 (11/32) Installing gcc (14.2.0-r6)
+#9 ...
+
+#10 [runtime 4/5] RUN npm ci --production --omit=dev
+#10 0.325 npm warn config production Use `--omit=dev` instead.
+#10 5.014 
+#10 5.014 added 180 packages, and audited 181 packages in 5s
+#10 5.014 
+#10 5.014 20 packages are looking for funding
+#10 5.014   run `npm fund` for details
+#10 5.015 
+#10 5.015 found 0 vulnerabilities
+#10 5.016 npm notice
+#10 5.016 npm notice New major version of npm available! 10.8.2 -> 11.6.4
+#10 5.016 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.4
+#10 5.016 npm notice To update run: npm install -g npm@11.6.4
+#10 5.016 npm notice
+#10 DONE 5.3s
+
+#9 [build 3/6] RUN apk add --no-cache     python3     make     g++     libc6-compat
+#9 6.552 (12/32) Installing musl-dev (1.2.5-r10)
+#9 6.788 (13/32) Installing g++ (14.2.0-r6)
+#9 8.128 (14/32) Installing musl-obstack (1.2.3-r2)
+#9 8.155 (15/32) Installing libucontext (1.3.2-r0)
+#9 8.187 (16/32) Installing gcompat (1.1.0-r4)
+#9 8.224 (17/32) Installing make (4.4.1-r3)
+#9 8.262 (18/32) Installing libbz2 (1.0.8-r6)
+#9 8.294 (19/32) Installing libexpat (2.7.3-r0)
+#9 8.329 (20/32) Installing libffi (3.4.8-r0)
+#9 8.358 (21/32) Installing gdbm (1.24-r0)
+#9 8.391 (22/32) Installing xz-libs (5.8.1-r0)
+#9 8.429 (23/32) Installing mpdecimal (4.0.1-r0)
+#9 8.465 (24/32) Installing ncurses-terminfo-base (6.5_p20250503-r0)
+#9 8.502 (25/32) Installing libncursesw (6.5_p20250503-r0)
+#9 8.543 (26/32) Installing libpanelw (6.5_p20250503-r0)
+#9 8.574 (27/32) Installing readline (8.2.13-r1)
+#9 8.612 (28/32) Installing sqlite-libs (3.49.2-r1)
+#9 8.699 (29/32) Installing python3 (3.12.12-r0)
+#9 9.392 (30/32) Installing python3-pycache-pyc0 (3.12.12-r0)
+#9 9.761 (31/32) Installing pyc (3.12.12-r0)
+#9 9.761 (32/32) Installing python3-pyc (3.12.12-r0)
+#9 9.762 Executing busybox-1.37.0-r19.trigger
+#9 9.776 OK: 261 MiB in 50 packages
+#9 DONE 10.0s
+
+#11 [build 4/6] COPY package*.json ./
+#11 DONE 0.1s
+
+#12 [build 5/6] RUN npm ci
+#12 3.834 
+#12 3.834 added 180 packages, and audited 181 packages in 4s
+#12 3.834 
+#12 3.834 20 packages are looking for funding
+#12 3.834   run `npm fund` for details
+#12 3.835 
+#12 3.835 found 0 vulnerabilities
+#12 3.836 npm notice
+#12 3.836 npm notice New major version of npm available! 10.8.2 -> 11.6.4
+#12 3.836 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.4
+#12 3.836 npm notice To update run: npm install -g npm@11.6.4
+#12 3.836 npm notice
+#12 DONE 4.0s
+
+#13 [build 6/6] COPY . .
+#13 DONE 0.7s
+
+#14 [runtime 5/5] COPY --from=build /usr/src/app .
+#14 DONE 0.7s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.8s done
+#15 exporting manifest sha256:39053cc4812b12d348354a65378a51f0c82ec151655531987cb53661c6d28bf7 done
+#15 exporting config sha256:6d7782ec1de6f8762ffd644d8e27ebf6cff712f32bf5420c8295bcd544d885e3 done
+#15 exporting attestation manifest sha256:2d6901f3127c47ea210012ff0f053b67f09ed6441328331d1a65cab66a321b8d done
+#15 exporting manifest list sha256:f19d3aa825bfa3e727f67e9e608b4e9a24c25e2811d214771472598a94747de0 done
+#15 naming to docker.io/library/backend-test:latest done
+#15 unpacking to docker.io/library/backend-test:latest
+#15 unpacking to docker.io/library/backend-test:latest 0.7s done
+#15 DONE 1.6s
