@@ -2,7 +2,7 @@
 version: "3.8"
 services:
   frontend:
-    image: DOCKERHUB_USER/crud-frontend:latest
+    image: thewizlaw/crud-frontend:latest
     ports:
       - "8081:80"
     restart: unless-stopped
@@ -10,7 +10,7 @@ services:
       - backend
 
   backend:
-    image: DOCKERHUB_USER/crud-backend:latest
+    image: thewizlaw/crud-backend:latest
     environment:
       - PORT=8080
       - MONGO_URI=mongodb://mongo:27017/tutorials_db
@@ -27,6 +27,7 @@ services:
       - mongo-data:/data/db
     ports:
       - "27017:27017"
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
 
   nginx:
     image: nginx:1.25-alpine
